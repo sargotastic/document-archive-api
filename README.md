@@ -28,45 +28,26 @@ Upload a document → extract its text → analyze it with AI → generate embed
 
 ## Architecture
 
-```text
-                    ┌─────────────────┐
-                    │     Client      │
-                    │ Swagger/Postman │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │    FastAPI      │
-                    │      API        │
-                    └────────┬────────┘
-                             │
-              ┌──────────────┼──────────────┐
-              │              │              │
-              ▼              ▼              ▼
-        Authentication   Documents       Search
-              │              │              │
-              │              ▼              │
-              │       PDF Text Extraction   │
-              │              │              │
-              │              ▼              │
-              │       Gemini Analysis       │
-              │              │              │
-              │              ▼              │
-              │        Text Chunking        │
-              │              │              │
-              │              ▼              │
-              │      MiniLM Embeddings      │
-              │              │              │
-              └──────────────┼──────────────┘
-                             ▼
-                    ┌─────────────────┐
-                    │    SQLite +     │
-                    │    SQLAlchemy   │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    Semantic Search / RAG
-````
+```mermaid
+flowchart TD
+    A[Client<br/>Swagger / Postman] --> B[FastAPI API]
+
+    B --> C[Authentication]
+    B --> D[Document Processing]
+    B --> E[Search]
+
+    D --> F[PDF Text Extraction]
+    F --> G[Gemini AI Analysis]
+    G --> H[Text Chunking]
+    H --> I[MiniLM Embeddings]
+    I --> J[(SQLite Database)]
+
+    E --> J
+    E --> K[Semantic Search]
+    D --> L[RAG / Document Q&A]
+
+    J --> L
+    L --> G
 
 ## Tech Stack
 

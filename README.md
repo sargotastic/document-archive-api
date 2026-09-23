@@ -48,6 +48,8 @@ flowchart TD
 
     J --> L
     L --> G
+    
+```text
 
 ## Tech Stack
 

@@ -1,4 +1,3 @@
-````markdown
 # Document Intelligence + Personal Archive API
 
 A backend API that turns uploaded PDF documents into searchable, structured knowledge.
@@ -48,8 +47,8 @@ flowchart TD
 
     J --> L
     L --> G
-    
-```text
+```
+
 
 ## Tech Stack
 
@@ -359,5 +358,3 @@ It combines:
 * External AI API integration
 * Automated testing
 * Production-oriented error handling
-
-````
